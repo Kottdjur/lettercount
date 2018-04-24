@@ -17,5 +17,5 @@ for line in sys.stdin:
             # Make lowercase and remove symbols
             word = word.lower()
             word = re.sub("\W+", "", word)
-            if re.match("han|hon|hen|den|det|denne|denna", word):
+            if re.match("^(han|hon|hen|den|det|denne|denna)$", word):
                 print word, "\t1"
