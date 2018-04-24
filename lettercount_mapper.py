@@ -1,9 +1,8 @@
 import json
 import re
+import sys
 
-tweets_file = open("tweets_sample.txt", "r")
-
-for line in tweets_file:
+for line in sys.stdin:
     try:
         tweets_json = json.loads(line)
     except json.decoder.JSONDecodeError:
@@ -16,4 +15,4 @@ for line in tweets_file:
             word = word.lower()
             word = re.sub("\W+", "", word)
             if re.match("han|hon|hen|den|det|denne|denna", word):
-                print(word)
+                print(word, "\t1")
