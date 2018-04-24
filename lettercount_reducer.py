@@ -1,3 +1,4 @@
+from operator import itemgetter
 import sys
 
 current_word = None
@@ -17,10 +18,10 @@ for line in sys.stdin:
         current_count += count
     else:
         if current_word:
-            print(current_word, "\t", current_count)
+            print current_word, "\t", current_count
 
         current_count = count
         current_word = word
 
 if current_word == word:
-    print(current_word, "\t", current_count)
+    print current_word, "\t", current_count
