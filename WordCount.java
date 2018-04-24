@@ -19,6 +19,7 @@ public class WordCount {
             while (tokenizer.hasMoreTokens()) {
                 word.set(tokenizer.nextToken());
 		for(int i=0; i < word.getLength(); i++) {
+		// Look for first letter in each word and make it lowercase, and use that instead of whole word
 			if(Character.isLetter(word.charAt(i))) {
 				letter = word.toString();
 				letter = letter.substring(i,i+1);
@@ -50,6 +51,8 @@ public class WordCount {
         conf.setOutputValueClass(IntWritable.class);
 	    
         conf.setMapperClass(Map.class);
+	// With combiner
+	conf.setCombinerClass(Reduce.class);
         conf.setReducerClass(Reduce.class);
 	    
         conf.setInputFormat(TextInputFormat.class);
